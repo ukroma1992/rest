@@ -1,0 +1,8 @@
+<%= simple_form_for @reservation do |f| %>
+
+  <div class="row datetimerange">
+    <%= f.input :requested_datetime, required: true, as: :datetime_picker %>
+  </div>
+  <%= f.submit 'Make Reservation' %>
+
+<% end %>

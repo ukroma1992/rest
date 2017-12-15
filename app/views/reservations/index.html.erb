@@ -1,0 +1,30 @@
+<h3>Listing reservations</h3>
+<br>
+  <%= link_to "Create reservation", new_reservation_path, class: "btn btn-default" %>
+<br>
+<hr>
+<% if @reservations.empty? %>
+  You havent made any reservations yet.
+<% else %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Reservation ID</th>
+          <th>Duration</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.id %></td>
+            <td class="text-center"><%= reservation.requested_datetime.strftime("%x %H:%M") %></td>
+            <td><%= link_to 'Show', restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
